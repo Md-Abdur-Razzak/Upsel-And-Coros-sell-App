@@ -30,13 +30,27 @@ export default function YouMayAlsoLike() {
     pages.push(products.slice(start, start + visibleCount));
   }
 
-  const Header = () => (
-    <div className="header">
-      <h2 className="title">You may also like</h2>
-      <div className="nav">
-        <button className="nav-btn" onClick={prev} disabled={page === 0}>◀</button>
-        <button className="nav-btn" onClick={next} disabled={page === totalPages - 1}>▶</button>
+const PreviewContanier = () => (
+    <div className="preview-container">
+        <div className="header-box dark-box">
+          <div className="line long-line"></div>
+        </div>
+        <div className="header-box light-box">
+          <div className="line short-line"></div>
+        </div>
       </div>
+);
+  const Header = () => (
+    <div >
+    <PreviewContanier/>
+   
+      <div className="header"><h2 className="title">You may also like</h2>
+        <div className="nav">
+          <button className="nav-btn" onClick={prev} disabled={page === 0}>◀</button>
+          <button className="nav-btn" onClick={next} disabled={page === totalPages - 1}>▶</button>
+        </div></div>
+
+
     </div>
   );
 
@@ -64,6 +78,8 @@ export default function YouMayAlsoLike() {
           </div>
         ))}
       </div>
+
+      <PreviewContanier/>
     </div>
   );
 
@@ -154,6 +170,57 @@ export default function YouMayAlsoLike() {
         .price { color: var(--green); font-weight: bold; font-size: 14px; }
         .old-price { text-decoration: line-through; color: var(--muted); font-size: 11px; margin-left: 5px; }
         .add-btn { background: var(--btn-bg); color: var(--btn-text); border: none; padding: 8px 14px; font-size: 12px; cursor: pointer; font-weight: bold; border-radius: 2px; }
+
+         .preview-container {
+         margin: 20px 0;
+         opacity: 0.5;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .header-box {
+        width: 100%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+      }
+
+      /* Upore gray box-er jonno */
+      .dark-box {
+        background-color: #d1d1d1;
+      }
+
+      /* Nicher border box-er jonno */
+      .light-box {
+        background-color: #ffffff;
+        border: 1px solid #e0e0e0;
+      }
+
+      /* Majher line gulo */
+      .line {
+        height: 6px;
+        background-color: #f0f0f0;
+        border-radius: 10px;
+      }
+
+      .long-line {
+        width: 40%;
+      }
+
+      .short-line {
+        width: 30%;
+        background-color: #e0e0e0;
+      }
+
+      /* Hover effect jate premium feel hoy */
+      .preview-container:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: 0.3s ease;
+      }
       `}</style>
     </div>
   );
